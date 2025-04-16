@@ -5,158 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arzhel's Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css" />
     <style>
-      .blinking-cursor {
-        font-weight: bold;
-        font-size: 1.25rem;
-        color: #facc15; /* Tailwind yellow-400 */
-        animation: blink 1s step-start infinite;
-      }
-
-      @keyframes blink {
-        50% {
-          opacity: 0;
-        }
-      }
+      .hidden { display: none; }
     </style>
   </head>
   <body class="font-sans">
+
     <!-- Navbar -->
-    <nav class="flex justify-between items-center p-5 bg-zinc-800 shadow-md">
-      <h1 class="text-yellow-400 font-bold text-xl">Arzhel About</h1>
+    <nav class="flex justify-between items-center p-5 bg-zinc-800 shadow-md sticky top-0 z-50">
+      <h1 class="text-yellow-400 font-bold text-xl">Arzhel</h1>
       <ul class="flex gap-6 text-sm">
-        <li><a href="#home" class="hover:text-yellow-300">Home</a></li>
-        <li><a href="#about" class="hover:text-yellow-300">About</a></li>
-        <li><a href="#portfolio" class="hover:text-yellow-300">Portfolio</a></li>
-        <li><a href="#blog" class="hover:text-yellow-300">Blog</a></li>
+        <li><button onclick="showSection('home')" class="hover:text-yellow-300">Home</button></li>
+        <li><button onclick="showSection('about')" class="hover:text-yellow-300">About</button></li>
+        <li><button onclick="showSection('portfolio')" class="hover:text-yellow-300">Portfolio</button></li>
+        <li><button onclick="showSection('blog')" class="hover:text-yellow-300">Blog</button></li>
+        <li><button onclick="showSection('contact')" class="hover:text-yellow-300">Contact</button></li>
       </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="flex flex-col items-center justify-center h-screen text-center px-4">
-      <img src="arzhel.png" alt="Arzhel's Avatar" class="w-40 h-40 rounded-full mb-4 border-yellow-400 border-4 object-cover shadow-lg" />
+    <!-- Home -->
+    <section id="home" class="section flex flex-col items-center justify-center h-screen text-center px-4">
+      <img src="arzhel.png" alt="Avatar" class="w-40 h-40 rounded-full border-yellow-400 border-4 mb-4" />
       <h2 class="text-2xl text-gray-300">Hello World, I'm</h2>
       <h1 class="text-4xl font-bold text-white">Arzhel</h1>
-
-      <!-- Typing Effect -->
-      <p class="text-lg text-yellow-300 mt-2">
-        <span id="typing-text"></span><span class="blinking-cursor">|</span>
-      </p>
-
+      <p class="text-lg text-yellow-300 mt-2">Backend-focused Web Developer</p>
       <p class="text-sm max-w-md mt-4 text-gray-400">
         I'm 18 and passionate about building powerful, responsive websites with HTML, CSS, and JavaScript.  
+      </p>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section hidden py-16 text-center px-4">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-4">About Me</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-8">
+        I'm 18 and passionate about building powerful, responsive websites with HTML, CSS, and JavaScript.
         Every line of code I write brings ideas to life — and I’m just getting started.
       </p>
-
-      <!-- Contact Button -->
-      <button onclick="toggleContact()" class="mt-6 px-6 py-2 bg-yellow-400 text-zinc-900 font-semibold rounded hover:bg-yellow-300 transition">
-        Contact
-      </button>
-
-      <!-- Contact Section -->
-      <div id="contact-section" class="mt-6 hidden text-sm text-gray-300">
-        <p><strong>Email:</strong> melikillua15@gmail.com</p>
-        <p><strong>Phone:</strong> 0642411772</p>
-        <p><strong>Facebook:</strong> 
-          <a href="https://www.facebook.com/share/18XJAFVAkb/" target="_blank" class="text-blue-400 underline">
-            View Profile
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-16 bg-zinc-900 text-white">
-      <div class="max-w-5xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold text-yellow-400 mb-4">About Me</h2>
-        <p class="text-gray-400 text-lg mb-8">
-          I'm 18 and passionate about building powerful, responsive websites with HTML, CSS, and JavaScript.
-          Every line of code I write brings ideas to life — and I’m just getting started.
-        </p>
-
-        <!-- Skills Section -->
-        <div>
-          <h3 class="text-2xl font-semibold text-white mb-6">Skills</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <div class="flex items-center justify-center p-4 border border-zinc-700 rounded-lg hover:bg-zinc-800 transition">
-              <img src="html.png" alt="HTML" class="w-6 h-6 mr-2" />
-              <span>HTML</span>
-            </div>
-            <div class="flex items-center justify-center p-4 border border-zinc-700 rounded-lg hover:bg-zinc-800 transition">
-              <img src="css.png" alt="CSS" class="w-6 h-6 mr-2" />
-              <span>CSS</span>
-            </div>
-            <div class="flex items-center justify-center p-4 border border-zinc-700 rounded-lg hover:bg-zinc-800 transition">
-              <img src="javascript.png" alt="JavaScript" class="w-6 h-6 mr-2" />
-              <span>JavaScript</span>
-            </div>
-            <!-- Add more skills if you want -->
-          </div>
+      <h3 class="text-2xl mb-4 font-semibold">Skills</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <div class="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded hover:bg-zinc-800">
+          <img src="html.png" class="w-6 h-6" /> HTML
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded hover:bg-zinc-800">
+          <img src="css.png" class="w-6 h-6" /> CSS
+        </div>
+        <div class="flex items-center gap-2 px-4 py-2 border border-zinc-700 rounded hover:bg-zinc-800">
+          <img src="javascript.png" class="w-6 h-6" /> JavaScript
         </div>
       </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-5 bg-[#0d0d0d]">
+    <!-- Portfolio -->
+    <section id="portfolio" class="section hidden py-16 px-4">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-bold text-white">My Projects</h2>
-        <p class="text-gray-400 mt-3 max-w-xl mx-auto">Some of my best work</p>
+        <p class="text-gray-400 mt-3">Some of my best work</p>
       </div>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Project Cards -->
-        <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
-          <img src="blue.png" class="rounded-lg mb-3" alt="Landscape Project" />
-          <h3 class="text-white text-xl font-semibold">Landscape Landing Page</h3>
-          <p class="text-gray-400 text-sm mt-1">A clean and scenic website design using HTML, CSS and SVG backgrounds.</p>
+        <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition">
+          <img src="blue.png" class="rounded-lg mb-3" />
+          <h3 class="text-xl font-semibold">Landscape Landing Page</h3>
+          <p class="text-gray-400 text-sm">A clean and scenic website using HTML/CSS/SVG.</p>
         </div>
-
-        <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
-          <img src="pruple.png" class="rounded-lg mb-3" alt="Japan Theme" />
-          <h3 class="text-white text-xl font-semibold">Japan Themed Website</h3>
-          <p class="text-gray-400 text-sm mt-1">An aesthetic design inspired by Japanese culture and gradients.</p>
+        <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition">
+          <img src="pruple.png" class="rounded-lg mb-3" />
+          <h3 class="text-xl font-semibold">Japan Themed Website</h3>
+          <p class="text-gray-400 text-sm">Inspired by Japanese gradients and culture.</p>
         </div>
-
-        <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
-          <img src="red.png" class="rounded-lg mb-3" alt="Registration UI" />
-          <h3 class="text-white text-xl font-semibold">Gradient Registration UI</h3>
-          <p class="text-gray-400 text-sm mt-1">A user-friendly registration form with smooth color transitions.</p>
+        <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition">
+          <img src="red.png" class="rounded-lg mb-3" />
+          <h3 class="text-xl font-semibold">Gradient Registration UI</h3>
+          <p class="text-gray-400 text-sm">A modern form with smooth transitions.</p>
         </div>
       </div>
     </section>
 
-    <!-- Scripts -->
+    <!-- Blog -->
+    <section id="blog" class="section hidden py-16 text-center">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-4">Blog</h2>
+      <p class="text-gray-400 text-lg">Coming soon...</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section hidden py-16 text-center">
+      <h2 class="text-3xl font-bold text-yellow-400 mb-4">Contact</h2>
+      <p><strong>Email:</strong> melikillua15@gmail.com</p>
+      <p><strong>Phone:</strong> 0642411772</p>
+      <p><strong>Facebook:</strong> 
+        <a href="https://www.facebook.com/share/18XJAFVAkb/" class="text-blue-400 underline" target="_blank">View Profile</a>
+      </p>
+    </section>
+
+    <!-- JavaScript for section switching -->
     <script>
-      function toggleContact() {
-        const section = document.getElementById('contact-section');
-        section.classList.toggle('hidden');
+      function showSection(id) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(sec => sec.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
       }
 
-      // Typing effect
-      const texts = ["Backend-focused Web Developer", "HTML, CSS, JS Lover", "Responsive Design Builder"];
-      const typingText = document.getElementById("typing-text");
-      let textIndex = 0, charIndex = 0, isDeleting = false;
-
-      function type() {
-        const current = texts[textIndex];
-        typingText.textContent = isDeleting
-          ? current.substring(0, charIndex--)
-          : current.substring(0, charIndex++);
-
-        if (!isDeleting && charIndex === current.length) {
-          isDeleting = true;
-          setTimeout(type, 1000);
-        } else if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          textIndex = (textIndex + 1) % texts.length;
-          setTimeout(type, 300);
-        } else {
-          setTimeout(type, isDeleting ? 50 : 100);
-        }
-      }
-
-      window.addEventListener("DOMContentLoaded", type);
+      // Show home by default
+      showSection('home');
     </script>
   </body>
 </html>
