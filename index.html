@@ -6,6 +6,20 @@
     <title>Arzhel's Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .blinking-cursor {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: #facc15; /* Tailwind yellow-400 */
+        animation: blink 1s step-start infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
   </head>
   <body class="font-sans">
     <!-- Navbar -->
@@ -24,7 +38,12 @@
       <img src="arzhel.png" alt="Arzhel's Avatar" class="w-40 h-40 rounded-full mb-4 border-yellow-400 border-4 object-cover shadow-lg" />
       <h2 class="text-2xl text-gray-300">Hello World, I'm</h2>
       <h1 class="text-4xl font-bold text-white">Arzhel</h1>
-      <p class="text-lg text-yellow-300 mt-2">Backend-focused Web Developer</p>
+
+      <!-- Typing Effect -->
+      <p class="text-lg text-yellow-300 mt-2">
+        <span id="typing-text"></span><span class="blinking-cursor">|</span>
+      </p>
+
       <p class="text-sm max-w-md mt-4 text-gray-400">
         I'm 18 and passionate about building powerful, responsive websites with HTML, CSS, and JavaScript.  
         Every line of code I write brings ideas to life — and I’m just getting started.
@@ -56,7 +75,7 @@
           Every line of code I write brings ideas to life — and I’m just getting started.
         </p>
 
-        <!-- Skills Section Start -->
+        <!-- Skills Section -->
         <div>
           <h3 class="text-2xl font-semibold text-white mb-6">Skills</h3>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
@@ -72,10 +91,9 @@
               <img src="javascript.png" alt="JavaScript" class="w-6 h-6 mr-2" />
               <span>JavaScript</span>
             </div>
-            <!-- Add more skills below -->
+            <!-- Add more skills if you want -->
           </div>
         </div>
-        <!-- Skills Section End -->
       </div>
     </section>
 
@@ -87,21 +105,19 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Project 1 -->
+        <!-- Project Cards -->
         <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
           <img src="blue.png" class="rounded-lg mb-3" alt="Landscape Project" />
           <h3 class="text-white text-xl font-semibold">Landscape Landing Page</h3>
           <p class="text-gray-400 text-sm mt-1">A clean and scenic website design using HTML, CSS and SVG backgrounds.</p>
         </div>
 
-        <!-- Project 2 -->
         <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
           <img src="pruple.png" class="rounded-lg mb-3" alt="Japan Theme" />
           <h3 class="text-white text-xl font-semibold">Japan Themed Website</h3>
           <p class="text-gray-400 text-sm mt-1">An aesthetic design inspired by Japanese culture and gradients.</p>
         </div>
 
-        <!-- Project 3 -->
         <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
           <img src="red.png" class="rounded-lg mb-3" alt="Registration UI" />
           <h3 class="text-white text-xl font-semibold">Gradient Registration UI</h3>
@@ -110,12 +126,37 @@
       </div>
     </section>
 
-    <!-- Toggle Script -->
+    <!-- Scripts -->
     <script>
       function toggleContact() {
         const section = document.getElementById('contact-section');
         section.classList.toggle('hidden');
       }
+
+      // Typing effect
+      const texts = ["Backend-focused Web Developer", "HTML, CSS, JS Lover", "Responsive Design Builder"];
+      const typingText = document.getElementById("typing-text");
+      let textIndex = 0, charIndex = 0, isDeleting = false;
+
+      function type() {
+        const current = texts[textIndex];
+        typingText.textContent = isDeleting
+          ? current.substring(0, charIndex--)
+          : current.substring(0, charIndex++);
+
+        if (!isDeleting && charIndex === current.length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % texts.length;
+          setTimeout(type, 300);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", type);
     </script>
   </body>
 </html>
