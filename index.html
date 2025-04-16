@@ -29,16 +29,34 @@
         I'm 18 and passionate about building powerful, responsive websites with HTML, CSS, and JavaScript.  
         Every line of code I write brings ideas to life — and I’m just getting started.
       </p>
+
+      <!-- Contact Button -->
+      <button onclick="toggleContact()" class="mt-6 px-6 py-2 bg-yellow-400 text-zinc-900 font-semibold rounded hover:bg-yellow-300 transition">
+        Contact
+      </button>
+
+      <!-- Contact Section -->
+      <div id="contact-section" class="mt-6 hidden text-sm text-gray-300">
+        <p><strong>Email:</strong> melikillua15@gmail.com</p>
+        <p><strong>Phone:</strong> 0642411772</p>
+        <p><strong>Facebook:</strong> 
+          <a href="https://www.facebook.com/share/18XJAFVAkb/" target="_blank" class="text-blue-400 underline">
+            View Profile
+          </a>
+        </p>
+      </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="hidden py-16 bg-zinc-900 text-white">
+    <section id="about" class="py-16 bg-zinc-900 text-white">
       <div class="max-w-5xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-yellow-400 mb-4">About Me</h2>
         <p class="text-gray-400 text-lg mb-8">
           I'm 18 and passionate about building powerful, responsive websites with HTML, CSS, and JavaScript.
           Every line of code I write brings ideas to life — and I’m just getting started.
         </p>
+
+        <!-- Skills Section Start -->
         <div>
           <h3 class="text-2xl font-semibold text-white mb-6">Skills</h3>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
@@ -54,28 +72,36 @@
               <img src="javascript.png" alt="JavaScript" class="w-6 h-6 mr-2" />
               <span>JavaScript</span>
             </div>
+            <!-- Add more skills below -->
           </div>
         </div>
+        <!-- Skills Section End -->
       </div>
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="hidden py-20 px-5 bg-[#0d0d0d]">
+    <section id="portfolio" class="py-20 px-5 bg-[#0d0d0d]">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-bold text-white">My Projects</h2>
         <p class="text-gray-400 mt-3 max-w-xl mx-auto">Some of my best work</p>
       </div>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Project 1 -->
         <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
           <img src="blue.png" class="rounded-lg mb-3" alt="Landscape Project" />
           <h3 class="text-white text-xl font-semibold">Landscape Landing Page</h3>
           <p class="text-gray-400 text-sm mt-1">A clean and scenic website design using HTML, CSS and SVG backgrounds.</p>
         </div>
+
+        <!-- Project 2 -->
         <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
           <img src="pruple.png" class="rounded-lg mb-3" alt="Japan Theme" />
           <h3 class="text-white text-xl font-semibold">Japan Themed Website</h3>
           <p class="text-gray-400 text-sm mt-1">An aesthetic design inspired by Japanese culture and gradients.</p>
         </div>
+
+        <!-- Project 3 -->
         <div class="bg-gray-900 p-4 rounded-xl shadow-lg hover:scale-105 transition duration-300">
           <img src="red.png" class="rounded-lg mb-3" alt="Registration UI" />
           <h3 class="text-white text-xl font-semibold">Gradient Registration UI</h3>
@@ -84,32 +110,12 @@
       </div>
     </section>
 
-    <!-- SPA JavaScript Logic -->
+    <!-- Toggle Script -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll("nav a");
-
-        function showSection(id) {
-          sections.forEach(section => {
-            if (section.id === id) {
-              section.classList.remove("hidden");
-            } else {
-              section.classList.add("hidden");
-            }
-          });
-        }
-
-        navLinks.forEach(link => {
-          link.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute("href").substring(1);
-            showSection(targetId);
-          });
-        });
-
-        showSection("home");
-      });
+      function toggleContact() {
+        const section = document.getElementById('contact-section');
+        section.classList.toggle('hidden');
+      }
     </script>
   </body>
 </html>
